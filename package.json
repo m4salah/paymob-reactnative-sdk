@@ -1,22 +1,11 @@
 {
   "name": "paymob-reactnative",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Official Paymob SDK",
-  "source": "./src/index.tsx",
-  "main": "./lib/commonjs/index.js",
-  "module": "./lib/module/index.js",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./lib/typescript/module/src/index.d.ts",
-        "default": "./lib/module/index.js"
-      },
-      "require": {
-        "types": "./lib/typescript/commonjs/src/index.d.ts",
-        "default": "./lib/commonjs/index.js"
-      }
-    }
-  },
+  "source": "./src/index.js",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "types": "./src/index.d.ts",
   "files": [
     "src",
     "lib",
@@ -41,7 +30,6 @@
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
-    "prepare": "bob build",
     "release": "release-it"
   },
   "keywords": [
@@ -51,14 +39,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alyezz/paymob-reactnative.git"
+    "url": "git+https://github.com/PaymobAccept/paymob-reactnative.git"
   },
-  "author": "Aly Ezz <alyezz94@gmail.com> (https://github.com/alyezz)",
+  "author": "Paymob <info@paymob.com> (https://github.com/PaymobAccept)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alyezz/paymob-reactnative/issues"
+    "url": "https://github.com/PaymobAccept/paymob-reactnative/issues"
   },
-  "homepage": "https://github.com/alyezz/paymob-reactnative#readme",
+  "homepage": "https://github.com/PaymobAccept/paymob-reactnative#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -78,7 +66,6 @@
     "prettier": "^3.0.3",
     "react": "18.3.1",
     "react-native": "0.75.4",
-    "react-native-builder-bob": "^0.30.2",
     "release-it": "^15.0.0",
     "turbo": "^1.10.7",
     "typescript": "^5.2.2"
@@ -153,31 +140,6 @@
     "tabWidth": 2,
     "trailingComma": "es5",
     "useTabs": false
-  },
-  "react-native-builder-bob": {
-    "source": "src",
-    "output": "lib",
-    "targets": [
-      [
-        "commonjs",
-        {
-          "esm": true
-        }
-      ],
-      [
-        "module",
-        {
-          "esm": true
-        }
-      ],
-      [
-        "typescript",
-        {
-          "project": "tsconfig.build.json",
-          "esm": true
-        }
-      ]
-    ]
   },
   "create-react-native-library": {
     "type": "module-legacy",

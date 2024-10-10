@@ -1,0 +1,13 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url = rootProject.projectDir.toURI().resolve("libs") // Local libs directory
+        }
+        maven {
+            url = uri("https://jitpack.io") // External JitPack repository
+        }
+        gradlePluginPortal()
+    }
+}
