@@ -1,6 +1,4 @@
 declare module 'paymob-reactnative' {
-  import { NativeEventEmitter } from 'react-native';
-
   export interface PaymobListener {
     (status: PaymentResult): void;
   }

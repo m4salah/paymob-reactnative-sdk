@@ -8,29 +8,55 @@ To learn more about Paymob’s offerings and capabilities, visit [Paymob.com](ht
 
 To get started with the `paymob-reactnative` package, follow these steps:
 
-1. **Install the Package**
+- **Install the Package**
 
-   Open your terminal, navigate to your React Native project directory, and install the `paymob-reactnative` package using npm:
+  Open your terminal, navigate to your React Native project directory, and install the `paymob-reactnative` package using npm:
 
-   ```bash
-   npm install paymob-reactnative
-   ```
+  ```bash
+  npm install paymob-reactnative
+  ```
 
-   If you prefer using Yarn, you can run:
+  If you prefer using Yarn, you can run:
 
-   ```bash
-   yarn add paymob-reactnative
-   ```
+  ```bash
+  yarn add paymob-reactnative
+  ```
 
-2. **Install CocoaPods for iOS**
+  ### iOS
 
-   If you are developing for iOS, you will need to install CocoaPods to manage your project's dependencies. Run the following commands:
+- **Install CocoaPods for iOS**
 
-   ```bash
-   cd ios && pod install && cd ..
-   ```
+  If you are developing for iOS, you will need to install CocoaPods to manage your project's dependencies. Run the following commands:
 
-   This step ensures that the necessary native modules are linked correctly in your iOS project.
+  ```bash
+  cd ios && pod install && cd ..
+  ```
+
+  This step ensures that the necessary native modules are linked correctly in your iOS project.
+
+  **Important Notice:** If you encounter an issue with the native iOS SDK, you may need to create a new blank Swift file in Xcode. After creating the blank file, be sure to click on `Create Bridging Header` when prompted.
+
+  ### Android
+
+- Append the following snippet to your **project-level** `build.gradle` file.
+  ```java
+  allprojects {
+      repositories {
+          maven {
+              url = rootProject.projectDir.toURI().resolve("../node_modules/paymob-reactnative/android/libs")
+          }
+          maven {
+              url = uri("https://jitpack.io")
+          }
+      }
+  }
+  ```
+- Add the following snippet to your **app-level** `build.gradle` file.
+  ```java
+  android {
+      buildFeatures { dataBinding = true }
+  }
+  ```
 
 ## Using Paymob
 
