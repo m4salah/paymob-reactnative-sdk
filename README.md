@@ -127,6 +127,39 @@ Paymob.presentPayVC('CLIENT_SECRET', 'PUBLIC_KEY', savedBankCards);
 
 This function call opens the Paymob payment interface, allowing users to complete their transactions securely. Make sure to replace `'CLIENT_SECRET'` and `'PUBLIC_KEY'` with your actual credentials.
 
+Here’s the updated explanation with a revised first sentence and the inclusion of the repository cloning step:
+
+## Example App
+
+To explore the SDK or test its features, you can clone the repository and run the example app by following these steps:
+
+1. **Clone the Repository**  
+   Clone the repository to your local machine.
+
+2. **Install Dependencies**  
+   Navigate to the project directory and install the required dependencies using Yarn. Run:
+
+   ```bash
+   yarn
+   ```
+
+3. **Run the Example App**  
+   You can run the example app for both iOS and Android platforms:
+
+   - To run the app on **iOS**, use the following command:
+
+     ```bash
+     yarn example ios
+     ```
+
+   - To run the app on **Android**, use this command:
+
+     ```bash
+     yarn example android
+     ```
+
+By following these steps, you can explore the functionality of the SDK in the example app.
+
 ## Documentation
 
 For more detailed information about the supported APIs, usage guidelines, and advanced features, please refer to our comprehensive [**Documentation**](https://developers.paymob.com/). Here, you will find examples, best practices, and troubleshooting tips to help you make the most out of the Paymob SDK.
