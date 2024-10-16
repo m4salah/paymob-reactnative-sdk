@@ -30,13 +30,19 @@ export default function App() {
       // Handle the transaction status
       switch (status) {
         case PaymentResult.SUCCESS:
-          Alert.alert('Payment result', PaymentResult.SUCCESS);
+          requestAnimationFrame(() => {
+            Alert.alert('Payment result', PaymentResult.SUCCESS);
+          });
           break;
         case PaymentResult.FAIL:
-          Alert.alert('Payment result', PaymentResult.FAIL);
+          requestAnimationFrame(() => {
+            Alert.alert('Payment result', PaymentResult.FAIL);
+          });
           break;
         case PaymentResult.PENDING:
-          Alert.alert('Payment result', PaymentResult.PENDING);
+          requestAnimationFrame(() => {
+            Alert.alert('Payment result', PaymentResult.PENDING);
+          });
           break;
       }
     });

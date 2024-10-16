@@ -4,23 +4,19 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Base64
+import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableArray
-import com.facebook.react.modules.core.DeviceEventManagerModule
+import com.facebook.react.bridge.WritableMap
 import com.paymob.paymob_sdk.PaymobSdk
 import com.paymob.paymob_sdk.domain.model.CreditCard
 import com.paymob.paymob_sdk.domain.model.SavedCard
 import com.paymob.paymob_sdk.ui.PaymobSdkListener
 
-/**
- * React Native module for integrating Paymob SDK functionalities.
- *
- * @param reactContext The React application context.
- */
+
 class PaymobReactnativeModule(reactContext: ReactApplicationContext) :
-  ReactContextBaseJavaModule(reactContext), PaymobSdkListener {
+  EventEmitterModule(reactContext), PaymobSdkListener {
 
   private var appIcon: Bitmap? = null
   private var appName: String? = null
@@ -28,8 +24,6 @@ class PaymobReactnativeModule(reactContext: ReactApplicationContext) :
   private var buttonTextColor: Int? = null
   private var saveCardDefault: Boolean? = null
   private var showSaveCard: Boolean? = null
-
-  private val reactContext: ReactApplicationContext = reactContext
 
   override fun getName(): String {
     return "PaymobReactnative"
@@ -153,6 +147,22 @@ class PaymobReactnativeModule(reactContext: ReactApplicationContext) :
   }
 
   /**
+   * Keep: Required for RN built-in Event Emitter Calls.
+   */
+  @ReactMethod
+  override fun addListener(event: String?) {
+    super.addListener(event!!)
+  }
+
+  /**
+   * Keep: Required for RN built-in Event Emitter Calls.
+   */
+  @ReactMethod
+  override fun removeListeners(count: Int?) {
+    super.removeListeners(count!!)
+  }
+
+  /**
    * Called when the payment process fails.
    */
   override fun onFailure() {
@@ -198,8 +208,8 @@ class PaymobReactnativeModule(reactContext: ReactApplicationContext) :
    * @param status The status of the transaction.
    */
   private fun emitTransactionStatus(status: String) {
-    reactContext
-      .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-      .emit("onTransactionStatus", status)
+    val statusMap: WritableMap = Arguments.createMap()
+    statusMap.putString("status", status)
+    sendEvent("onTransactionStatus", statusMap)
   }
 }

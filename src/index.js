@@ -82,8 +82,9 @@ const Paymob = {
    * @param {function} listener - A callback function that receives the transaction status.
    */
   setSdkListener(listener) {
+    this.removeSdkListener();
     paymobEvents.addListener('onTransactionStatus', (event) => {
-      Platform.OS === 'ios' ? listener(event.status) : listener(event);
+      listener(event.status);
     });
   },
   /**
