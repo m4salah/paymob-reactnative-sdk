@@ -13,13 +13,13 @@ To get started with the `paymob-reactnative` package, follow these steps:
   Open your terminal, navigate to your React Native project directory, and install the `paymob-reactnative` package using npm:
 
   ```bash
-  npm install paymob-reactnative
+  npm install paymob-reactnative@https://github.com/PaymobAccept/paymob-reactnative-sdk.git
   ```
 
   If you prefer using Yarn, you can run:
 
   ```bash
-  yarn add paymob-reactnative
+  yarn add paymob-reactnative@https://github.com/PaymobAccept/paymob-reactnative-sdk.git
   ```
 
   ### iOS

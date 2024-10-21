@@ -36,18 +36,21 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "Paymob",
+    "PaymobAccept",
+    "PaymobSDK"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PaymobAccept/paymob-reactnative.git"
+    "url": "git+https://github.com/PaymobAccept/paymob-reactnative-sdk.git"
   },
   "author": "Paymob <info@paymob.com> (https://github.com/PaymobAccept)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PaymobAccept/paymob-reactnative/issues"
+    "url": "https://github.com/PaymobAccept/paymob-reactnative-sdk/issues"
   },
-  "homepage": "https://github.com/PaymobAccept/paymob-reactnative#readme",
+  "homepage": "https://github.com/PaymobAccept/paymob-reactnative-sdk#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
