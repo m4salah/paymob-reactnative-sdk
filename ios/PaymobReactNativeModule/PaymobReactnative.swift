@@ -14,6 +14,7 @@ class PaymobReactnative: RCTEventEmitter, PaymobSDKDelegate {
     private var buttonTextColor: UIColor? = nil
     private var saveCardDefault: Bool? = nil
     private var showSaveCard: Bool? = nil
+    private var showConfirmationPage: Bool? = nil
   
     // MARK: - React Native Module
     override static func moduleName() -> String {
@@ -57,6 +58,11 @@ class PaymobReactnative: RCTEventEmitter, PaymobSDKDelegate {
     func setShowSaveCard(_ isVisible: Bool) {
         showSaveCard = isVisible
     }
+  
+    @objc
+    func setShowConfirmationPage(_ isVisible: Bool) {
+      showConfirmationPage = isVisible
+    }
 
     @objc
     func presentPayVC(_ clientSecret: String, publicKey: String, savedBankCards: NSArray?) {
@@ -88,27 +94,27 @@ class PaymobReactnative: RCTEventEmitter, PaymobSDKDelegate {
         }
     }
   
-    // MARK: - Transaction Status Handling
-    func transactionRejected() {
-        // Handle transaction rejection
-        print("Transaction Rejected")
-        let params: [String: Any] = ["status": "Fail"]
-        emitEvent(eventName: "onTransactionStatus", params: params)
-    }
+  // MARK: - Transaction Status Handling
+  func transactionRejected() {
+      // Handle transaction rejection
+      print("Transaction Rejected")
+      let params: [String: Any] = ["status": "Fail"]
+      emitEvent(eventName: "onTransactionStatus", params: params)
+  }
 
-    func transactionAccepted() {
-        // Handle transaction acceptance
-        print("Transaction Accepted")
-        let params: [String: Any] = ["status": "Success"]
-        emitEvent(eventName: "onTransactionStatus", params: params)
-    }
+  func transactionAccepted(transactionDetails: [String: Any]) {
+      // Handle transaction acceptance
+      print("Transaction Accepted")
+      var params: [String: Any] = ["status": "Success", "details": transactionDetails]
+      emitEvent(eventName: "onTransactionStatus", params: params)
+  }
 
-    func transactionPending() {
-        // Handle transaction pending status
-        print("Transaction Pending")
-        let params: [String: Any] = ["status": "Pending"]
-        emitEvent(eventName: "onTransactionStatus", params: params)
-    }
+  func transactionPending() {
+      // Handle transaction pending status
+      print("Transaction Pending")
+      let params: [String: Any] = ["status": "Pending"]
+      emitEvent(eventName: "onTransactionStatus", params: params)
+  }
   
     // MARK: - Private Methods
     private func setupPaymobCustomization() {
@@ -135,6 +141,11 @@ class PaymobReactnative: RCTEventEmitter, PaymobSDKDelegate {
         if let saveCardDefault = self.saveCardDefault {
             paymob.paymobSDKCustomization.saveCardDefault = saveCardDefault
         }
+      
+      if let saveCardDefault = self.showConfirmationPage {
+        paymob.paymobSDKCustomization.showConfirmationPage = showConfirmationPage
+      }
+      
     }
 
      private func mapCreditCard(_ creditCard: String?) -> CardType? {

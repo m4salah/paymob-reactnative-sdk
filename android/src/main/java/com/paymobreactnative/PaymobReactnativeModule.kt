@@ -24,6 +24,7 @@ class PaymobReactnativeModule(reactContext: ReactApplicationContext) :
   private var buttonTextColor: Int? = null
   private var saveCardDefault: Boolean? = null
   private var showSaveCard: Boolean? = null
+  private var showResultsPage: Boolean? = null
 
   override fun getName(): String {
     return "PaymobReactnative"
@@ -95,6 +96,16 @@ class PaymobReactnativeModule(reactContext: ReactApplicationContext) :
   }
 
   /**
+   * Sets whether the confirmation page is shown in the SDK.
+   *
+   * @param isVisible Boolean to show/hide the confirmation page.
+   */
+  @ReactMethod
+  fun setShowConfirmationPage(isVisible: Boolean) {
+    showResultsPage = isVisible
+  }
+
+  /**
    * Presents the payment view controller with the specified parameters.
    *
    * @param clientSecret The client secret provided by Paymob.
@@ -119,9 +130,7 @@ class PaymobReactnativeModule(reactContext: ReactApplicationContext) :
           if (!maskedPan.isNullOrEmpty() && !savedCardToken.isNullOrEmpty() && !creditCard.isNullOrEmpty()) {
             val mappedCreditCard = mapCreditCard(creditCard)
             if (mappedCreditCard != null) {
-              // Add the first valid card to the savedCards list
-              savedCards.add(SavedCard("**** **** **** $maskedPan", savedCardToken, mappedCreditCard))
-              break // Break after the first valid card
+              savedCards.add(SavedCard(maskedPan, savedCardToken, mappedCreditCard))
             }
           }
         } catch (e: Exception) {
@@ -135,14 +144,15 @@ class PaymobReactnativeModule(reactContext: ReactApplicationContext) :
       paymobSdkListener = this,
       clientSecret = clientSecret,
       publicKey = publicKey,
-      savedCard = if (savedCards.isNotEmpty()) savedCards[0] else null // Pass only the first card if available
+      savedCards = savedCards.toTypedArray() // Pass only the first card if available
     ).apply {
-      // appIcon?.let { setAppLogo(it) }
+//      appIcon?.let { set(it) }
       appName?.let { setAppName(it) }
       buttonBackgroundColor?.let { setButtonBackgroundColor(it) }
       buttonTextColor?.let { setButtonTextColor(it) }
       saveCardDefault?.let { isSavedCardCheckBoxCheckedByDefault(it) }
       showSaveCard?.let { isAbleToSaveCard(it) }
+      showResultsPage?.let { showResultPage(it) }
     }.build().start()
   }
 
@@ -178,9 +188,11 @@ class PaymobReactnativeModule(reactContext: ReactApplicationContext) :
 
   /**
    * Called when the payment process is successful.
+   *
+   * @param payResponse A map containing the payment response data.
    */
-  override fun onSuccess() {
-    emitTransactionStatus("Success")
+  override fun onSuccess(payResponse: HashMap<String, String?>) {
+    emitTransactionStatus("Success", payResponse)
   }
 
   /**
@@ -203,13 +215,31 @@ class PaymobReactnativeModule(reactContext: ReactApplicationContext) :
   }
 
   /**
-   * Emits the transaction status to the JavaScript side.
+   * Emits the transaction status and details (if available) to the JavaScript side.
    *
    * @param status The status of the transaction.
+   * @param payResponse A map containing the payment response data (optional).
    */
-  private fun emitTransactionStatus(status: String) {
+  private fun emitTransactionStatus(status: String, payResponse: HashMap<String, String?>? = null) {
+    // Create a WritableMap to send to React Native
     val statusMap: WritableMap = Arguments.createMap()
+
+    // Add status to the map
     statusMap.putString("status", status)
+
+    // If payResponse is not null, add details
+    if (payResponse != null) {
+      val detailsMap: WritableMap = Arguments.createMap()
+      for ((key, value) in payResponse) {
+        detailsMap.putString(key, value)
+      }
+      statusMap.putMap("details", detailsMap)
+    } else {
+      // If no payResponse, we can still send a null or empty details map
+      statusMap.putMap("details", Arguments.createMap())
+    }
+
+    // Send the event with both status and details
     sendEvent("onTransactionStatus", statusMap)
   }
 }

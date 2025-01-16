@@ -77,6 +77,7 @@ Paymob.setButtonTextColor('#FFFFFF'); // Set the text color of buttons in the SD
 Paymob.setButtonBackgroundColor('#000000'); // Set the background color of buttons in the SDK
 Paymob.setShowSaveCard(true); // Enable the option for users to save their cards
 Paymob.setSaveCardDefault(true); // Set saved card option as default for transactions
+Paymob.setShowConfirmationPage(true); // Show confirmation page upon payment
 ```
 
 These customization options allow you to tailor the Paymob SDK interface to align with your brand identity.

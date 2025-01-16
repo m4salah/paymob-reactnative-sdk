@@ -23,18 +23,11 @@
 #import "NBRegularExpressionCache.h"
 #import "NSArray+NBAdditions.h"
 
-#import "AudioToolbox/AudioToolbox.h"
-#import "AVFoundation/AVFoundation.h"
-#import "CoreMedia/CoreMedia.h"
-#import "CoreVideo/CoreVideo.h"
-#import "MobileCoreServices/MobileCoreServices.h"
-
-//@import AudioToolbox;
-//@import AVFoundation;
-//@import CoreMedia;
-//@import CoreVideo;
-//@import MobileCoreServices;
-
+@import AudioToolbox;
+@import AVFoundation;
+@import CoreMedia;
+@import CoreVideo;
+@import MobileCoreServices;
 
 //! Project version number for PaymobSDK.
 FOUNDATION_EXPORT double PaymobSDKVersionNumber;

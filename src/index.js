@@ -69,6 +69,13 @@ const Paymob = {
     PaymobReactnative.setShowSaveCard(isVisible);
   },
   /**
+   * Sets whether or not the confirmation page is shown.
+   * @param {boolean} isVisible - A boolean to show/hide.
+   */
+  setShowConfirmationPage(isVisible) {
+    PaymobReactnative.setShowConfirmationPage(isVisible);
+  },
+  /**
    * Presents the payment view controller.
    * @param {string} clientSecret - The client secret.
    * @param {string} publicKey - The public key.
@@ -83,8 +90,8 @@ const Paymob = {
    */
   setSdkListener(listener) {
     this.removeSdkListener();
-    paymobEvents.addListener('onTransactionStatus', (event) => {
-      listener(event.status);
+    paymobEvents.addListener('onTransactionStatus', (response) => {
+      listener(response);
     });
   },
   /**
@@ -116,7 +123,7 @@ export const CreditCardType = {
  * @readonly
  * @enum {string}
  */
-export const PaymentResult = {
+export const PaymentStatus = {
   SUCCESS: 'Success',
   FAIL: 'Fail',
   PENDING: 'Pending',
