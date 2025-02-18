@@ -42,7 +42,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		9ylJ5KCely0fE3duzndUPzPKgmc=
+		PjhjlcOQIbCtq8wuygAf1bnYcns=
 		</data>
 		<key>BKMoneyKit.bundle/CardLogo/amex@2x.png</key>
 		<data>
@@ -151,6 +151,18 @@
 		<key>Forsa.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<data>
 		KLKEeQym1DRgJ/37gg5PQ2UI2Ho=
+		</data>
+		<key>Halan.storyboardc/HalanVC.nib</key>
+		<data>
+		C4wOLwMC7UpBGxD6ItthAKY/sHE=
+		</data>
+		<key>Halan.storyboardc/Info.plist</key>
+		<data>
+		NIGb0cSv1ShtqFQx4J/uiJwh4G4=
+		</data>
+		<key>Halan.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
+		<data>
+		5ExGt3+wKs0hy0dK7CIdAUOvl8E=
 		</data>
 		<key>Headers/BKCardExpiryField.h</key>
 		<data>
@@ -262,7 +274,7 @@
 		</data>
 		<key>Modules/PaymobSDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		mMN4EiZWUyDS82ArYSwmi1q3ha0=
+		AHWSbDfwhshTW0fICaSZK/rzu3I=
 		</data>
 		<key>Modules/PaymobSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
@@ -278,7 +290,7 @@
 		</data>
 		<key>Modules/PaymobSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		p3TNJV8HGmNO6hf18Z3nC0yWz+Q=
+		NaXoG2KOZwxZbE6WkyhLDreg/PM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -298,11 +310,11 @@
 		</data>
 		<key>Otp.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<data>
-		TsFXIQaBNhEnTj8FwKwJ4rWmrwQ=
+		qL8fbguP0K0wMZGBX9p/ukp/Keo=
 		</data>
 		<key>PaymentMethodCell.nib</key>
 		<data>
-		A+9nJPbs6AvsjOIQxkOzGUgLvr0=
+		kLPpzxJIMRpqSxKrO9oHcehKsIQ=
 		</data>
 		<key>PaymentMethods.storyboardc/Info.plist</key>
 		<data>
@@ -378,7 +390,7 @@
 		</data>
 		<key>SouhoolaTransaction.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<data>
-		9w82hCFTEv4JNhthWoM9tt4x5Lc=
+		QKgEl3nAh02uEIV9q2F6Z7SuqXg=
 		</data>
 		<key>Sympl.storyboardc/Info.plist</key>
 		<data>
@@ -550,7 +562,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LlcW2T7TS2NSfGpaSQ6V2V9iQFVmlMYs2cRUlPp3qk4=
+			Z0uXUbbE++XoaBMbUmMRlQ4qApnt683b8G5NvuRGuKw=
 			</data>
 		</dict>
 		<key>BKMoneyKit.bundle/CardLogo/amex@2x.png</key>
@@ -742,6 +754,27 @@
 			OKYf9cWESS17p94/eaX8F+EwjCxK90EZNEWqMRr4pFE=
 			</data>
 		</dict>
+		<key>Halan.storyboardc/HalanVC.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DagYr5nIyNQJRW/4SyojzQ4DuKhoVR2QQ+o4/+30ehU=
+			</data>
+		</dict>
+		<key>Halan.storyboardc/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0MHouFscMn3TBViJGE5mf/Etl+ktmFLEAuO+KatsMh4=
+			</data>
+		</dict>
+		<key>Halan.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3hc4aeqX5M0Yq3jus+opzJO5vob1Nc7EMmv4+xTO5rM=
+			</data>
+		</dict>
 		<key>Headers/BKCardExpiryField.h</key>
 		<dict>
 			<key>hash2</key>
@@ -928,7 +961,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ua++ttJIEiU83pwymk2Fd+cafd9d4DhoSYuStRwPfiE=
+			5Oym1ASbWOIuaqS3YubLpCPkDORHaF5MU0/kBEpRo2M=
 			</data>
 		</dict>
 		<key>Modules/PaymobSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
@@ -956,7 +989,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BRRFdsHHYo66TOxqnl/OKoUnmAuexg+jKJiu7u3WohI=
+			93A0qdnnQnHr3sDyYpKqciH1Q5ypKIlajp8cjEoNi8w=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -991,14 +1024,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			43d+n2ITaRztk1o1qTqCF5jmRP4FpE87eYv57pH29D0=
+			3hwSy2gaOdpIhaHo2eZxSwiBviGZAij67mBb55cdsC4=
 			</data>
 		</dict>
 		<key>PaymentMethodCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Pj8duS1EfjZd/9BN80mo95dnj++iXMi7M7klqwCsuH4=
+			yUm4H2YMEJQ7arEXJSbVNTJNo/mRKhR9bt580UltwkA=
 			</data>
 		</dict>
 		<key>PaymentMethods.storyboardc/Info.plist</key>
@@ -1131,7 +1164,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZfiAicvE5suhnbWNvbD0q1Nop5wXUEAIOGlrM5jMHps=
+			kNS++yuKK/1Nm7oNzMAIVX3va78AiNoj+fA1eN96rb8=
 			</data>
 		</dict>
 		<key>Sympl.storyboardc/Info.plist</key>
