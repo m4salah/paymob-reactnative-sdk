@@ -65,20 +65,7 @@ class PaymobReactnative: RCTEventEmitter, PaymobSDKDelegate {
     }
 
     @objc
-    func presentPayVC(_ clientSecret: String, publicKey: String, savedBankCards: NSArray?) {
-        var savedCards: [SavedBankCard] = []
-        if let savedCardArray = savedBankCards as? [NSDictionary] {
-            for savedCardData in savedCardArray {
-                if let maskedPan = savedCardData["maskedPan"] as? String,
-                   let savedCardToken = savedCardData["savedCardToken"] as? String,
-                   let creditCardString = savedCardData["creditCard"] as? String {
-                    if let mappedCreditCard = mapCreditCard(creditCardString) {
-                        let savedBankCard = SavedBankCard(token: savedCardToken, maskedPanNumber: maskedPan, cardType: mappedCreditCard)
-                        savedCards.append(savedBankCard)
-                    }
-                }
-            }
-        }
+    func presentPayVC(_ clientSecret: String, publicKey: String) {
         paymob.delegate = self
 
         // Get the current view controller on the main thread
@@ -86,7 +73,7 @@ class PaymobReactnative: RCTEventEmitter, PaymobSDKDelegate {
             let currentVC = self.topMostController()
             do {
                 self.setupPaymobCustomization()
-                try paymob.presentPayVC(VC: currentVC!, PublicKey: publicKey, ClientSecret: clientSecret, SavedBankCards: savedCards)
+                try paymob.presentPayVC(VC: currentVC!, PublicKey: publicKey, ClientSecret: clientSecret)
             } catch let error {
                 print("Error presenting PayVC: \(error.localizedDescription)")
                 return
@@ -146,29 +133,6 @@ class PaymobReactnative: RCTEventEmitter, PaymobSDKDelegate {
         paymob.paymobSDKCustomization.showConfirmationPage = showConfirmationPage
       }
       
-    }
-
-     private func mapCreditCard(_ creditCard: String?) -> CardType? {
-        guard let creditCard = creditCard else { return nil }
-
-        switch creditCard {
-        case "VISA":
-            return CardType.Visa
-        case "MASTERCARD":
-            return CardType.MasterCard
-        case "AMERICAN_EXPRESS":
-            return CardType.Amex
-        case "MEEZA":
-            return CardType.Meeza
-        case "JCB":
-            return CardType.JCB
-        case "MAESTRO":
-            return CardType.Maestro
-        case "OMAN_NET":
-            return CardType.OmanNet
-        default:
-            return nil
-        }
     }
   
     private func emitEvent(eventName: String, params: [String: Any]) {

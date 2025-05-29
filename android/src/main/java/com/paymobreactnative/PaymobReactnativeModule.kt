@@ -110,41 +110,16 @@ class PaymobReactnativeModule(reactContext: ReactApplicationContext) :
    *
    * @param clientSecret The client secret provided by Paymob.
    * @param publicKey The public key provided by Paymob.
-   * @param savedBankCards An optional array of saved bank cards.
    */
   @ReactMethod
-  fun presentPayVC(clientSecret: String, publicKey: String, savedBankCards: ReadableArray?) {
+  fun presentPayVC(clientSecret: String, publicKey: String) {
     val context: Context = currentActivity ?: reactApplicationContext
-    val savedCards = mutableListOf<SavedCard>()
-
-    // Check if savedBankCards is not null
-    if (savedBankCards != null) {
-      for (i in 0 until savedBankCards.size()) {
-        try {
-          val savedBankCard = savedBankCards.getMap(i)
-          val maskedPan = savedBankCard.getString("maskedPan")
-          val savedCardToken = savedBankCard.getString("savedCardToken")
-          val creditCard = savedBankCard.getString("creditCard")
-
-          // Ensure necessary fields are not null or empty
-          if (!maskedPan.isNullOrEmpty() && !savedCardToken.isNullOrEmpty() && !creditCard.isNullOrEmpty()) {
-            val mappedCreditCard = mapCreditCard(creditCard)
-            if (mappedCreditCard != null) {
-              savedCards.add(SavedCard(maskedPan, savedCardToken, mappedCreditCard))
-            }
-          }
-        } catch (e: Exception) {
-          e.printStackTrace()
-        }
-      }
-    }
 
     PaymobSdk.Builder(
       context = context,
       paymobSdkListener = this,
       clientSecret = clientSecret,
       publicKey = publicKey,
-      savedCards = savedCards.toTypedArray() // Pass only the first card if available
     ).apply {
 //      appIcon?.let { set(it) }
       appName?.let { setAppName(it) }
@@ -193,25 +168,6 @@ class PaymobReactnativeModule(reactContext: ReactApplicationContext) :
    */
   override fun onSuccess(payResponse: HashMap<String, String?>) {
     emitTransactionStatus("Success", payResponse)
-  }
-
-  /**
-   * Maps a string representing a credit card type to a CreditCard enum.
-   *
-   * @param creditCard The credit card type as a string.
-   * @return The corresponding CreditCard enum or null if not found.
-   */
-  private fun mapCreditCard(creditCard: String): CreditCard? {
-    return when (creditCard) {
-      "VISA" -> CreditCard.VISA
-      "MASTERCARD" -> CreditCard.MASTERCARD
-      "AMERICAN_EXPRESS" -> CreditCard.AMERICAN_EXPRESS
-      "MEEZA" -> CreditCard.MEEZA
-      "JCB" -> CreditCard.JCB
-      "MAESTRO" -> CreditCard.MAESTRO
-      "OMAN_NET" -> CreditCard.OMAN_NET
-      else -> null
-    }
   }
 
   /**

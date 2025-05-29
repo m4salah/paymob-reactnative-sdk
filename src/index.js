@@ -79,10 +79,9 @@ const Paymob = {
    * Presents the payment view controller.
    * @param {string} clientSecret - The client secret.
    * @param {string} publicKey - The public key.
-   * @param {Array} savedBankCards - An array of saved bank cards.
    */
-  presentPayVC(clientSecret, publicKey, savedBankCards) {
-    PaymobReactnative.presentPayVC(clientSecret, publicKey, savedBankCards);
+  presentPayVC(clientSecret, publicKey) {
+    PaymobReactnative.presentPayVC(clientSecret, publicKey);
   },
   /**
    * Sets a listener for SDK transaction status updates.
@@ -101,21 +100,6 @@ const Paymob = {
   removeSdkListener() {
     paymobEvents.removeAllListeners('onTransactionStatus');
   },
-};
-
-/**
- * Enum for credit card types.
- * @readonly
- * @enum {string}
- */
-export const CreditCardType = {
-  VISA: 'VISA',
-  MASTERCARD: 'MASTERCARD',
-  AMERICAN_EXPRESS: 'AMERICAN_EXPRESS',
-  MEEZA: 'MEEZA',
-  JCB: 'JCB',
-  MAESTRO: 'MAESTRO',
-  OMAN_NET: 'OMAN_NET',
 };
 
 /**

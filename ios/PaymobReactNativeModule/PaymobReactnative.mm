@@ -12,8 +12,7 @@ RCT_EXTERN_METHOD(setSaveCardDefault:(BOOL)isChecked)
 RCT_EXTERN_METHOD(setShowSaveCard:(BOOL)isVisible)
 RCT_EXTERN_METHOD(setShowConfirmationPage:(BOOL)isVisible)
 RCT_EXTERN_METHOD(presentPayVC:(NSString *)clientSecret
-                  publicKey:(NSString *)publicKey
-                  savedBankCards:(NSArray *)savedBankCards)
+                  publicKey:(NSString *)publicKey)
 
 + (BOOL)requiresMainQueueSetup
 {

@@ -13,7 +13,6 @@ import {
 import Paymob, {
   PaymentStatus,
   type PaymentResponse,
-  CreditCardType,
 } from 'paymob-reactnative';
 
 export default function App() {
@@ -214,18 +213,9 @@ export default function App() {
 
         <Button
           onPress={() => {
-            const savedBankCards = [
-              {
-                maskedPan: '2346',
-                savedCardToken:
-                  'b8dc7c47fb4470c35faf063f7715c50b7e6b7907a930437803368895',
-                creditCard: CreditCardType.MASTERCARD,
-              },
-            ];
             Paymob.presentPayVC(
               'egy_csk_test_97b1e36553b6fa4b9793b7c3d5657250',
-              'egy_pk_test_LVWASE8YxObheYSAqOxxN3xT99yuXtFw',
-              savedBankCards
+              'egy_pk_test_LVWASE8YxObheYSAqOxxN3xT99yuXtFw'
             );
           }}
           title="Present Paymob"
