@@ -10322,14 +10322,13 @@ __metadata:
     "@react-native/babel-preset": 0.75.4
     "@react-native/metro-config": 0.75.4
     "@react-native/typescript-config": 0.75.4
-    paymob-reactnative: "workspace:^"
     react: 18.3.1
     react-native: 0.75.4
     react-native-builder-bob: ^0.30.2
   languageName: unknown
   linkType: soft
 
-"paymob-reactnative@workspace:., paymob-reactnative@workspace:^":
+"paymob-reactnative@workspace:.":
   version: 0.0.0-use.local
   resolution: "paymob-reactnative@workspace:."
   dependencies:
